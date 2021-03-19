@@ -62,5 +62,9 @@ class GildedRose {
 
     private void reduceItemQuality(Item item) {
         item.quality = item.quality - 1;
+        if(item.name.equals("Conjured Mana Cake")){
+            item.quality = item.quality - 1;
+        }
     }
+
 }
