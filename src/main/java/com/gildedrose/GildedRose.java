@@ -9,24 +9,22 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals("Aged Brie")
+            if (       !item.name.equals("Aged Brie")
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
-                    && item.quality > 0
-                    && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                    && !item.name.equals("Sulfuras, Hand of Ragnaros")
+                    && item.quality > 0) {
                         reduceItemQuality(item);
             } else {
                 if (item.quality < 50) {
                     increaseItemQuality(item);
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.sellIn < 11
-                                && item.quality < 50) {
-                                increaseItemQuality(item);
+                        if (item.sellIn < 11) {
+                                this.increaseIfBelowThreshold(item);
                         }
 
-                        if (item.sellIn < 6
-                                && item.quality < 50) {
-                                increaseItemQuality(item);
+                        if (item.sellIn < 6){
+                                this.increaseIfBelowThreshold(item);
                         }
                     }
                 }
@@ -37,9 +35,8 @@ class GildedRose {
             }
 
             if (item.sellIn < 0) {
-                if (!item.name.equals("Aged Brie")
-                        && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.quality > 0) {
+                if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.quality > 0) {
                             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
                                 reduceItemQuality(item);
                             }
@@ -47,11 +44,15 @@ class GildedRose {
                         item.quality = 0;
                     }
                 } else {
-                    if (item.quality < 50) {
-                       increaseItemQuality(item);
-                    }
+                    increaseIfBelowThreshold(item);
                 }
             }
+        }
+    }
+
+    private void increaseIfBelowThreshold(Item item) {
+        if (item.quality < 50) {
+           increaseItemQuality(item);
         }
     }
 
