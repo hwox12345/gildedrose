@@ -47,7 +47,14 @@ class GildedRose {
                     increaseIfBelowThreshold(item);
                 }
             }
+
+            zeroQualityIfNegative(item);
         }
+    }
+
+    private void zeroQualityIfNegative(Item item) {
+        if (item.quality < 0)
+            item.quality = 0;
     }
 
     private void increaseIfBelowThreshold(Item item) {

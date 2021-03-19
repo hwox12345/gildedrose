@@ -74,7 +74,7 @@ public class TextTest {
             "Backstage passes to a TAFKAL80ETC concert, 11, 24\n" +
             "Backstage passes to a TAFKAL80ETC concert, 6, 50\n" +
             "Backstage passes to a TAFKAL80ETC concert, 1, 50\n" +
-            "Conjured Mana Cake, -1,0\n" +
+            "Conjured Mana Cake, -1, 0\n" +
             "\n";
 
     private String exerciseCode(int days) throws IOException {
